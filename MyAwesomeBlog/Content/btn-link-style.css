@@ -1,0 +1,19 @@
+﻿.btn {
+    width: 150px !important;
+}
+
+.action-link {
+    color: teal;
+}
+
+.action-link:active {
+    color: teal;
+}
+
+.action-link:link {
+    color: teal;
+}
+
+.action-link:visited {
+    color: #a09e9e;
+}

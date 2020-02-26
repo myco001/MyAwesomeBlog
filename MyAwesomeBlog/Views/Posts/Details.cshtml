@@ -1,0 +1,53 @@
+﻿@model MyAwesomeBlog.Models.APost
+@using Microsoft.AspNet.Identity;
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link href="~/Content/blogpost.css" rel="stylesheet" />
+    <link href="~/Content/btn-link-style.css" rel="stylesheet" />
+</head>
+
+<h2 style="text-align: center">POST DETAILS</h2>
+
+<div>
+    <div class="blog-post">
+        <img src="https://www.w3schools.com/w3images/woods.jpg" alt="Nature" style="width:100%; margin-top:-10px; margin-bottom: 10px;">
+        <h2 class="blog-post-title">@Html.DisplayNameFor(model => model.PostHeading)</h2>
+        <p class="blog-post-meta">@Html.DisplayFor(model => model.PostDate) by @Html.DisplayFor(model => model.UserName)</p>
+
+        <p>@Html.Raw(Model.PostContent)</p>
+        <div class="container">
+            <div class="row">
+                @if (User.IsInRole("Admin") || (User.Identity.GetUserId() == Model.UserId))
+                {
+                    <div class="col-3">
+                        <input type="button" class="btn btn-lg btn-dark btn-block" value="Edit" onclick="@("window.location.href='" + @Url.Action("Edit", "Posts", new { id = Model.PostId }) + "'");" />
+                    </div>
+                    <div class="col-3">
+                        <input type="button" class="btn btn-lg btn-dark btn-block" value="Delete" onclick="@("window.location.href='" + @Url.Action("Delete", "Posts", new { id = Model.PostId }) + "'");" />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="blog-post">
+        @foreach (var item in Model.Comments)
+        {
+            <div>
+                <p>@Html.Raw(item.CommentContent)</p>
+                <p class="blog-post-meta">@Html.DisplayFor(model => model.PostDate) by @Html.DisplayFor(modelItem => item.UserName)</p>
+
+            </div>
+            <hr />
+        }
+        <p><input type="button" class="btn btn-lg btn-dark btn-block" value="Comment" onclick="@("window.location.href='" + @Url.Action("Create", "Comments", new { postId = Model.PostId }) + "'");" /></p>
+    </div>
+    <br />
+    <div>@Html.ActionLink("Back to List", "Index", null, new { @class = "action-link" })</div>
+
+</div>

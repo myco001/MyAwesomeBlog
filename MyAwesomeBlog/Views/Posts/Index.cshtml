@@ -1,0 +1,29 @@
+﻿@model IEnumerable<MyAwesomeBlog.Models.APost>
+@using Microsoft.AspNet.Identity;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align: center">AWESOME BLOG POSTS</h2>
+
+<head>
+    <link href="~/Content/blogpost.css" rel="stylesheet" />
+    <link href="~/Content/btn-link-style.css" rel="stylesheet" />
+</head>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "action-link" })
+</p>
+
+@foreach (var item in Model)
+{
+<div class="blog-post">
+    <img src="https://www.w3schools.com/w3images/woods.jpg" alt="Nature" style="width:100%; margin-top:-10px; margin-bottom: 10px;">
+    <h2 class="blog-post-title">@Html.ActionLink(item.PostHeading, "Details", new { id = item.PostId }, new { @class = "action-link" })</h2>
+    <p class="blog-post-meta">@Html.DisplayFor(modelItem => item.PostDate) by @Html.DisplayFor(modelItem => item.UserName)</p>
+
+    <p>@Html.Raw(item.PostContent)</p>
+</div>
+}

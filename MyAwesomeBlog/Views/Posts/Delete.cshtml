@@ -1,0 +1,52 @@
+﻿@model MyAwesomeBlog.Models.Post
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link href="~/Content/btn-link-style.css" rel="stylesheet" />
+</head>
+
+<h2 style="text-align: center">DELETE POST</h2>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PostHeading)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostHeading)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostContent)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.PostContent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostDate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" class="btn btn-lg btn-dark btn-block" value="Confirm" />
+            <br />
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "action-link" })
+        </div>
+    }
+</div>
