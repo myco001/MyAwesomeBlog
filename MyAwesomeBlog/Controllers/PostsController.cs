@@ -64,7 +64,7 @@ namespace MyAwesomeBlog.Controllers
                 };
                 if ( item.UserId != null)
                 {
-                    aComment.UserName = Context.Users.Find(post.UserId).UserName;
+                    aComment.UserName = Context.Users.Find(item.UserId).UserName;
                 }
                 else
                 {
@@ -72,6 +72,7 @@ namespace MyAwesomeBlog.Controllers
                 }
                 comments.Add(aComment);
             }
+            comments.Reverse();
 
             APost postComments = new APost
             {

@@ -40,14 +40,13 @@
         {
             <div>
                 <p>@Html.Raw(item.CommentContent)</p>
-                <p class="blog-post-meta">@Html.DisplayFor(model => model.PostDate) by @Html.DisplayFor(modelItem => item.UserName)</p>
+                <p class="blog-post-meta">@Html.DisplayFor(modelItem => item.CommentDate) by @Html.DisplayFor(modelItem => item.UserName)</p>
 
             </div>
             <hr />
         }
-        <p><input type="button" class="btn btn-lg btn-dark btn-block" value="Comment" onclick="@("window.location.href='" + @Url.Action("Create", "Comments", new { postId = Model.PostId }) + "'");" /></p>
+        <div class="col-3"><input type="button" class="btn btn-lg btn-dark btn-block" value="Comment" onclick="@("window.location.href='" + @Url.Action("Create", "Comments", new { postId = Model.PostId }) + "'");" /></div>
     </div>
-    <br />
-    <div>@Html.ActionLink("Back to List", "Index", null, new { @class = "action-link" })</div>
-
 </div>
+<br />
+<div>@Html.ActionLink("Back to List", "Index", null, new { @class = "action-link" })</div>
