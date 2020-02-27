@@ -17,6 +17,6 @@ CREATE TABLE [dbo].[Comments] (
     [CommentDate]    DATETIME NOT NULL,
     [PostId]         INT NOT NULL,
     PRIMARY KEY (CommentId),
-    FOREIGN KEY (PostId) REFERENCES Posts(PostId)
+    FOREIGN KEY (PostId) REFERENCES Posts(PostId) ON DELETE CASCADE
 );
 GO
