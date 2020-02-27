@@ -16,7 +16,7 @@
 <div>
     <div class="blog-post">
         <img src="https://www.w3schools.com/w3images/woods.jpg" alt="Nature" style="width:100%; margin-top:-10px; margin-bottom: 10px;">
-        <h2 class="blog-post-title">@Html.DisplayNameFor(model => model.PostHeading)</h2>
+        <h2 class="blog-post-title">@Html.DisplayFor(model => model.PostHeading)</h2>
         <p class="blog-post-meta">@Html.DisplayFor(model => model.PostDate) by @Html.DisplayFor(model => model.UserName)</p>
 
         <p>@Html.Raw(Model.PostContent)</p>
